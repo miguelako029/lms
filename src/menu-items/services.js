@@ -21,7 +21,7 @@ const pages = {
       id: 'search',
       title: 'Search',
       type: 'item',
-      url: '/pages/login/login3',
+      url: '/login',
       target: true,
       icon: icons.IconSearch
     },
@@ -29,7 +29,7 @@ const pages = {
       id: 'requestCart',
       title: 'Student/Cart',
       type: 'item',
-      url: '/pages/login/login3',
+      url: '/login',
       target: true,
       icon: icons.IconShoppingCart
     },
@@ -37,7 +37,7 @@ const pages = {
       id: 'requestCart',
       title: 'Student/Transaction History',
       type: 'item',
-      url: '/pages/login/login3',
+      url: '/login',
       target: true,
       icon: icons.IconHistory
     },
@@ -45,7 +45,7 @@ const pages = {
       id: 'bookRequest',
       title: 'Admin/Request Approval',
       type: 'item',
-      url: '/pages/login/login3',
+      url: '/login',
       target: true,
       icon: icons.IconUserCheck
     },
@@ -53,7 +53,7 @@ const pages = {
       id: 'bookRequest',
       title: 'Admin/Transaction History',
       type: 'item',
-      url: '/pages/login/login3',
+      url: '/login',
       target: true,
       icon: icons.IconFileTime
     }
@@ -61,7 +61,7 @@ const pages = {
     //   id: 'login3',
     //   title: 'Login',
     //   type: 'item',
-    //   url: '/pages/login/login3',
+    //   url: '/login',
     //   target: true
     // },
     // {

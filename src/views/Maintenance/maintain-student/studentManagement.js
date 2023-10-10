@@ -10,10 +10,12 @@
 // import { MENU_OPEN } from 'store/actions';
 
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, IconButton } from '@mui/material';
+
 // import { ModeEditOutlineIcon, DeleteIcon } from '@mui/icons-material/';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 // ==============================|| MAIN LOGO ||============================== //
 
@@ -34,6 +36,11 @@ const studentManagement = () => {
     <div style={{ justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <h2>User List</h2>
 
+      <Button variant="contained" sx={{ marginBottom: 5, marginTop: 4, fontSize: 17 }}>
+        <AddIcon sx={{ fontSize: 16, marginRight: 1 }} />
+        New User
+      </Button>
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -51,12 +58,12 @@ const studentManagement = () => {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell align="right">
-                  <Button>
+                  <IconButton aria-label="edit" color="primary">
                     <EditIcon />
-                  </Button>
-                  <Button>
+                  </IconButton>
+                  <IconButton aria-label="delete" color="primary">
                     <DeleteIcon />
-                  </Button>
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}

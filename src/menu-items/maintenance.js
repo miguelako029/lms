@@ -19,7 +19,7 @@ const utilities = {
       id: 'studentMgt',
       title: 'Student Management',
       type: 'item',
-      url: '/utils/util-typography',
+      url: '/maintenance/studentManagement',
       icon: icons.IconSettings,
       breadcrumbs: false
     },
@@ -27,7 +27,7 @@ const utilities = {
       id: 'books',
       title: 'Books',
       type: 'item',
-      url: '/utils/util-color',
+      url: '/maintenance/books',
       icon: icons.IconBook2,
       breadcrumbs: false
     },
@@ -35,7 +35,7 @@ const utilities = {
       id: 'catalogs',
       title: 'Catalog',
       type: 'item',
-      url: '/utils/util-shadow',
+      url: '/maintenance/catalog',
       icon: icons.IconCategory,
       breadcrumbs: false
     }

@@ -14,6 +14,10 @@ const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 
+const MaintainUser = Loadable(lazy(() => import('views/Maintenance/maintain-student/studentManagement')));
+const MaintainBooks = Loadable(lazy(() => import('views/Maintenance/maintain-books/bookList')));
+const MaintainCatalog = Loadable(lazy(() => import('views/Maintenance/maintain-catalog/catalogList')));
+
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 
@@ -78,6 +82,33 @@ const MainRoutes = {
         {
           path: 'material-icons',
           element: <UtilsMaterialIcons />
+        }
+      ]
+    },
+    {
+      path: 'maintenance',
+      children: [
+        {
+          path: 'studentManagement',
+          element: <MaintainUser />
+        }
+      ]
+    },
+    {
+      path: 'maintenance',
+      children: [
+        {
+          path: 'books',
+          element: <MaintainBooks />
+        }
+      ]
+    },
+    {
+      path: 'maintenance',
+      children: [
+        {
+          path: 'catalog',
+          element: <MaintainCatalog />
         }
       ]
     },

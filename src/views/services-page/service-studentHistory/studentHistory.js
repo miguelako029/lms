@@ -11,29 +11,29 @@
 
 import React from 'react';
 
-// import CartTable from '../service-searchBookDashboard/cartTable';
+import StudentHistoryTable from './historyTable';
 
 // ==============================|| MAIN LOGO ||============================== //
 
-const bookManagement = () => {
+const studentHistory = () => {
   //   const defaultId = useSelector((state) => state.customization.defaultId);
   //   const dispatch = useDispatch();
 
-  //   const cartItems = [
-  //     { name: 'Item 1', price: 10, quantity: 2 },
-  //     { name: 'Item 2', price: 15, quantity: 1 },
-  //     { name: 'Item 3', price: 5, quantity: 3 }
-  //   ];
+  const studentHistoryTable = [
+    { name: 'Item 1', price: 10, quantity: 2 },
+    { name: 'Item 2', price: 15, quantity: 1 },
+    { name: 'Item 3', price: 5, quantity: 3 }
+  ];
 
   return (
     // <ButtonBase disableRipple onClick={() => dispatch({ type: MENU_OPEN, id: defaultId })} component={Link} to={config.defaultPath}>
 
     <div className="App">
-      <h1>Search Books</h1>
-      {/* <CartTable cartItems={cartItems} /> */}
+      <h1>Shopping Cart</h1>
+      <StudentHistoryTable studentHistoryTable={studentHistoryTable} />
     </div>
   );
   // </ButtonBase>
 };
 
-export default bookManagement;
+export default studentHistory;

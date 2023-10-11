@@ -10,11 +10,11 @@
 // import { MENU_OPEN } from 'store/actions';
 
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, IconButton } from '@mui/material';
+import { Button } from '@mui/material';
+import UserTable from './userTable';
 
 // import { ModeEditOutlineIcon, DeleteIcon } from '@mui/icons-material/';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+
 import AddIcon from '@mui/icons-material/Add';
 
 // ==============================|| MAIN LOGO ||============================== //
@@ -41,35 +41,7 @@ const studentManagement = () => {
         New User
       </Button>
 
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell align="right">
-                  <IconButton aria-label="edit" color="primary">
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton aria-label="delete" color="primary">
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <UserTable users={users} />
     </div>
     // </ButtonBase>
   );

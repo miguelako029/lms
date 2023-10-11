@@ -10,6 +10,9 @@
 // import { MENU_OPEN } from 'store/actions';
 
 import React from 'react';
+import ForApprovalTable from './forApprovalTable';
+
+// import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 // import CartTable from '../service-searchBookDashboard/cartTable';
 
@@ -19,18 +22,18 @@ const bookManagement = () => {
   //   const defaultId = useSelector((state) => state.customization.defaultId);
   //   const dispatch = useDispatch();
 
-  //   const cartItems = [
-  //     { name: 'Item 1', price: 10, quantity: 2 },
-  //     { name: 'Item 2', price: 15, quantity: 1 },
-  //     { name: 'Item 3', price: 5, quantity: 3 }
-  //   ];
+  const forApprovals = [
+    { name: 'Item 1', price: 10, quantity: 2 },
+    { name: 'Item 2', price: 15, quantity: 1 },
+    { name: 'Item 3', price: 5, quantity: 3 }
+  ];
 
   return (
     // <ButtonBase disableRipple onClick={() => dispatch({ type: MENU_OPEN, id: defaultId })} component={Link} to={config.defaultPath}>
 
     <div className="App">
-      <h1>Search Books</h1>
-      {/* <CartTable cartItems={cartItems} /> */}
+      <h1>Approvals</h1>
+      <ForApprovalTable forApprovals={forApprovals} />
     </div>
   );
   // </ButtonBase>

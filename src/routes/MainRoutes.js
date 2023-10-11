@@ -20,7 +20,7 @@ const MaintainCatalog = Loadable(lazy(() => import('views/maintenance-page/maint
 
 const ServiceSearchBook = Loadable(lazy(() => import('views/services-page/service-searchBookDashboard/searchBook')));
 const ServiceCart = Loadable(lazy(() => import('views/services-page/service-cart/cart')));
-const ServiceAdminApproval = Loadable(lazy(() => import('views/services-page/service-cart/cart')));
+const ServiceAdminApproval = Loadable(lazy(() => import('views/services-page/service-adminApproval/adminApproval')));
 const ServiceStudentHistory = Loadable(lazy(() => import('views/services-page/service-studentHistory/studentHistory')));
 const ServiceAdminHistory = Loadable(lazy(() => import('views/services-page/service-adminHistory/adminHistory')));
 

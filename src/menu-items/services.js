@@ -35,27 +35,27 @@ const pages = {
     },
     {
       id: 'bookRequest',
-      title: 'Admin/Request Approval',
+      title: 'Admin Approvals',
       type: 'item',
-      url: '/login',
-      target: true,
+      url: '/services/forApproval',
+
       icon: icons.IconUserCheck
     },
     {
       id: 'studentHistory',
       title: 'Student/Transaction History',
       type: 'item',
-      url: '/login',
-      target: true,
+      url: '/services/studentHistory',
+
       icon: icons.IconHistory
     },
 
     {
-      id: 'bookRequest',
+      id: 'adminHistory',
       title: 'Admin/Transaction History',
       type: 'item',
-      url: '/login',
-      target: true,
+      url: '/services/adminHistory',
+
       icon: icons.IconFileTime
     }
     // {

@@ -1,39 +1,87 @@
-// import { Link } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { Button, Card, CardContent, CardMedia, Container, Grid, TextField, Typography } from '@mui/material';
 
-// material-ui
-// import { ButtonBase } from '@mui/material';
+const BookManagement = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const books = [
+    {
+      title: 'Book 1',
+      categories: ['Fiction', 'Fantasy'],
+      count: 10,
+      image: 'https://via.placeholder.com/150'
+    },
+    {
+      title: 'Book 2',
+      categories: ['Non-fiction', 'Self-help'],
+      count: 5,
+      image: 'https://via.placeholder.com/150'
+    },
+    {
+      title: 'Book 3',
+      categories: ['Mystery', 'Thriller'],
+      count: 7,
+      image: 'https://via.placeholder.com/150'
+    }
+  ];
 
-// project imports
-// import config from 'config';
-// import Logo from 'ui-component/Logo';
-// import { MENU_OPEN } from 'store/actions';
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-import React from 'react';
+  const handleCategoryFilter = (category) => {
+    setSelectedCategory(category);
+  };
 
-// import CartTable from '../service-searchBookDashboard/cartTable';
+  const handleAddToCart = () => {
+    // Implement your logic to add the book to the cart here
+    // For example, you can maintain a separate state for the cart items.
+  };
 
-// ==============================|| MAIN LOGO ||============================== //
-
-const bookManagement = () => {
-  //   const defaultId = useSelector((state) => state.customization.defaultId);
-  //   const dispatch = useDispatch();
-
-  //   const cartItems = [
-  //     { name: 'Item 1', price: 10, quantity: 2 },
-  //     { name: 'Item 2', price: 15, quantity: 1 },
-  //     { name: 'Item 3', price: 5, quantity: 3 }
-  //   ];
+  const filteredBooks = selectedCategory ? books.filter((book) => book.categories.includes(selectedCategory)) : books;
 
   return (
-    // <ButtonBase disableRipple onClick={() => dispatch({ type: MENU_OPEN, id: defaultId })} component={Link} to={config.defaultPath}>
-
-    <div className="App">
-      <h1>Search Books</h1>
-      {/* <CartTable cartItems={cartItems} /> */}
-    </div>
+    <Container>
+      <TextField label="Search" variant="outlined" fullWidth value={searchTerm} onChange={handleSearchChange} />
+      <Button variant="outlined" color="primary" style={{ marginTop: 10 }} onClick={() => handleCategoryFilter('')}>
+        All
+      </Button>
+      {['Fiction', 'Fantasy', 'Non-fiction', 'Self-help', 'Mystery', 'Thriller'].map((category, index) => (
+        <Button
+          key={index}
+          variant="outlined"
+          color="primary"
+          style={{ marginTop: 10, marginLeft: 10 }}
+          onClick={() => handleCategoryFilter(category)}
+        >
+          {category}
+        </Button>
+      ))}
+      <Grid container spacing={2} style={{ marginTop: 20 }}>
+        {filteredBooks.map((book, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Card>
+              <CardMedia component="img" height="150" image={book.image} alt={book.title} />
+              <CardContent>
+                <Typography variant="h6" component="div">
+                  {book.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Categories: {book.categories.join(', ')}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Available: {book.count} in stock
+                </Typography>
+                <Button variant="contained" color="primary" onClick={handleAddToCart} style={{ marginTop: 10 }}>
+                  Add to Cart
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
-  // </ButtonBase>
 };
 
-export default bookManagement;
+export default BookManagement;

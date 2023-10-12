@@ -13,6 +13,7 @@ import themes from 'themes';
 import NavigationScroll from 'layout/NavigationScroll';
 
 import { ModalProvider } from './context/modalContext';
+import CreateUserModal from './ui-component/modal/modal';
 
 // ==============================|| APP ||============================== //
 
@@ -25,6 +26,7 @@ const App = () => {
         <ThemeProvider theme={themes(customization)}>
           <CssBaseline />
           <NavigationScroll>
+            <CreateUserModal />
             <Routes />
           </NavigationScroll>
         </ThemeProvider>

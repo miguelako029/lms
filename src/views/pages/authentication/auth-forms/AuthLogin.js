@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -7,18 +7,18 @@ import {
   Box,
   Button,
   Checkbox,
-  Divider,
+  // Divider,
   FormControl,
   FormControlLabel,
   FormHelperText,
-  Grid,
+  // Grid,
   IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
   Stack,
-  Typography,
-  useMediaQuery
+  Typography
+  // useMediaQuery
 } from '@mui/material';
 
 // third party
@@ -26,32 +26,23 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 // project imports
-// import useScriptRef from 'hooks/useScriptRef';
+import useScriptRef from 'hooks/useScriptRef';
 import AnimateButton from 'ui-component/extended/AnimateButton';
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import Google from 'assets/images/icons/social-google.svg';
-
-import { auth } from '../../../../firebase-config'; // Import the Firebase auth instance
-
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-
-// import { AuthContextProvide } from '../components/context/AuthenticatorContext';
+//import Google from 'assets/images/icons/social-google.svg';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const FirebaseLogin = ({ ...others }) => {
   const theme = useTheme();
-  // const scriptedRef = useScriptRef();
-  const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
-  const customization = useSelector((state) => state.customization);
+  const scriptedRef = useScriptRef();
+  // const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
+  // const customization = useSelector((state) => state.customization);
   const [checked, setChecked] = useState(true);
-
-  // const [error, setError] = useState(false);
 
   // const googleHandler = async () => {
   //   console.error('Login');
@@ -66,39 +57,9 @@ const FirebaseLogin = ({ ...others }) => {
     event.preventDefault();
   };
 
-  const { dispatch } = useContext(AuthContextProvide);
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(user);
-      dispatch({ type: 'LOGIN', payload: user });
-      navigate('/'); // Use navigate to redirect to the root URL
-      // ...
-    });
-    // .catch((error) => {
-    //   setError(true);
-    // });
-  };
   return (
     <>
-      <Grid container direction="column" justifyContent="center" spacing={2}>
+      {/* <Grid container direction="column" justifyContent="center" spacing={2}>
         <Grid item xs={12}>
           <AnimateButton>
             <Button
@@ -149,13 +110,13 @@ const FirebaseLogin = ({ ...others }) => {
 
             <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
           </Box>
-        </Grid>
+        </Grid> 
         <Grid item xs={12} container alignItems="center" justifyContent="center">
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1">Sign in with Email address</Typography>
           </Box>
         </Grid>
-      </Grid>
+      </Grid>*/}
 
       <Formik
         initialValues={{
@@ -167,24 +128,23 @@ const FirebaseLogin = ({ ...others }) => {
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
           password: Yup.string().max(255).required('Password is required')
         })}
-        onClick={handleLoginSubmit}
-        // onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-        //   try {
-        //     if (scriptedRef.current) {
-        //       setStatus({ success: true });
-        //       setSubmitting(false);
-        //     }
-        //   } catch (err) {
-        //     console.error(err);
-        //     if (scriptedRef.current) {
-        //       setStatus({ success: false });
-        //       setErrors({ submit: err.message });
-        //       setSubmitting(false);
-        //     }
-        //   }
-        // }}
+        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+          try {
+            if (scriptedRef.current) {
+              setStatus({ success: true });
+              setSubmitting(false);
+            }
+          } catch (err) {
+            console.error(err);
+            if (scriptedRef.current) {
+              setStatus({ success: false });
+              setErrors({ submit: err.message });
+              setSubmitting(false);
+            }
+          }
+        }}
       >
-        {({ errors, handleBlur, handleSubmit, isSubmitting, touched, values }) => (
+        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...others}>
             <FormControl fullWidth error={Boolean(touched.email && errors.email)} sx={{ ...theme.typography.customInput }}>
               <InputLabel htmlFor="outlined-adornment-email-login">Email Address / Username</InputLabel>
@@ -194,7 +154,7 @@ const FirebaseLogin = ({ ...others }) => {
                 value={values.email}
                 name="email"
                 onBlur={handleBlur}
-                onChange={handleEmailChange}
+                onChange={handleChange}
                 label="Email Address / Username"
                 inputProps={{}}
               />
@@ -213,7 +173,7 @@ const FirebaseLogin = ({ ...others }) => {
                 value={values.password}
                 name="password"
                 onBlur={handleBlur}
-                onChange={handlePasswordChange}
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
